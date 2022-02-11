@@ -1,2 +1,2 @@
 # wordle-clone
-A clone of worlde made in JavaFX
+A clone of worlde made in JS
