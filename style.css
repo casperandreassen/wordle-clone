@@ -2,13 +2,30 @@ body {
     background-color: #141414;
     color: #e0e0e0;
     font-family: 'Poppins', sans-serif;
+}
+
+#wrapper {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
 }
 
+.button {
+    margin-top: 30px;
+    background-color: #1167f2;
+    width: 125px;
+    height: 60px;
+    border: 0px;
+    border-radius: 10px;
+}
 
+.button:hover {
+    border: 1px solid lightgray;
+    transition: 0.2s;
+    cursor: pointer;
+}
 
 
 #letter_grid {
@@ -49,14 +66,50 @@ body {
     gap: 5px;
 }
 
-.letter_box {
-    border: 0px;
-    border-radius: 5px;
-    background-color: #2e2e2e;
-    width: 90px;
-    height: 90px;
-    font-size: 30pt;
+/* CSS for tutorial card */
+
+#how_to_play_card {
+    position: absolute;
+    width: 500px;
+    height: 80%;    
+    margin: auto;
+    background-color: #242424;
+    border: 1px solid #3d3d3d;
+    border-radius: 30px;
+    box-shadow: 3px 3px #e0e0e0 ;
+}
+
+.tutorial_text{
+    width: 80%;
     text-align: center;
+    margin: auto;
+    padding: 15px 0px 15px 0px;
+}
+
+#how_to_play_tutorial {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 5px;
+    padding: 40px 0px;
+}
+
+
+.letter_box {
+    background-color: #0d0d0d;
+    width: 70px;
+    height: 70px;
+    font-size: 25pt;
+    border: 1px solid #3d3d3d;
+    border-radius: 3px;
+}
+
+.letter_box p {
+    margin: auto;
+    text-align: center;
+    height: 100%;
+    width: 100%;
+    line-height: 70px;
 }
 
 

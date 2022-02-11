@@ -1,16 +1,25 @@
 
-let todaysWord = "ABBOR"
+let todaysWord = "";
 let guessString = [];
 let currentRow = 0;
-let winState = false; 
+let activeState = false; 
+
+function getTodaysWord() {
+    /* Here i have to set up something on the webserver so that only todays word gets pulled and not the entire list of possible words. */
+}
+
+
 
 document.addEventListener("keydown", function (event) {
-    if (!winState) {
+    if (activeState) {
         if ("abcdefghijklmnopqrstuvwxyzæøåABCDEFGHIJKLMNOPQRSTUVWXYZÆØÅ".includes(event.key)) {
             if (!(guessString.length > 4)) {
                 guessString.push(event.key.toUpperCase()); 
                 console.log(guessString);
                 updateLetterRow(guessString, currentRow);
+            }
+            else {
+                displayNewNotification("Kan ikke legge til flere bokstaver")
             }
         }
         if (event.key == "Backspace") {
@@ -26,6 +35,11 @@ document.addEventListener("keydown", function (event) {
 
 document.getElementById("guess_button").addEventListener("click", () => {
     handleCheckWordEvent();
+})
+
+document.getElementById("start_button").addEventListener("click", () => {
+    activeState = true;
+    document.getElementById("how_to_play_card").style.cssText = "display: none;"
 })
 
 
@@ -49,8 +63,10 @@ function updateLetterRow(guessString, currentRow) {
         let currentId = currentRow.toString() + i.toString()
         if (guessString[i] === undefined) {
             document.getElementById(currentId).innerText = "";
+            document.getElementById("box_" + currentId).style.cssText = "border: 1px solid #3d3d3d; transition: 0.2s;";
         } else {
             document.getElementById(currentId).innerText = guessString[i].toString();
+            document.getElementById("box_" + currentId).style.cssText = "border: 1px solid lightgray; transition: 0.2s;";
         }
     } 
 }
@@ -90,20 +106,23 @@ function setRowColor(rowColor, row) {
         currentId = "box_" + row.toString() + i.toString();
         if (rowColor[i] == 1) {
             points++
-            document.getElementById(currentId).style.cssText = "background-color: #46b019;"
+            document.getElementById(currentId).style.cssText = "background-color: #46b019; border: 1px solid lightgray; transition: 0.2s;"
         }
         if (rowColor[i] == 0) {
-            document.getElementById(currentId).style.cssText = "background-color: #e6a122"
+            document.getElementById(currentId).style.cssText = "background-color: #e6a122; border: 1px solid lightgray; transition: 0.2s;"
+        }
+        if (rowColor[i] == -1) {
+            document.getElementById(currentId).style.cssText = "background-color: #3b3b3b; border: 1px solid lightgray; transition: 0.2s;"
         }
     }
-
     if (points == 5) {
         setWinState(currentRow);
     }
+    displayNewNotification("Prøv igjen")
 }
 
 function setWinState(currentRow) {
-    winState = true; 
+    activeState = false; 
     displayNewNotification("Gratulerer du gjettet riktig på " + (currentRow + 1) + " forsøk!")
 
 }
@@ -112,8 +131,8 @@ function setWinState(currentRow) {
 
 function displayNewNotification (notification) {
     document.getElementById('information').innerText = notification;
-    document.getElementById('information').style.cssText = 'visibility: visible; opacity: 1; transition: visibility 0.4s, opacity 0.5s linear;'
+    document.getElementById('information').style.cssText = 'visibility: visible; opacity: 1; transition: visibility 1s, opacity 0.5s linear;'
     setTimeout(function() {
-        document.getElementById('information').style.cssText = 'visibility: hidden; opacity: 0; transition: visibility 0.4s, opacity 0.5s linear;'
+        document.getElementById('information').style.cssText = 'visibility: hidden; opacity: 0; transition: visibility 1s, opacity 0.5s linear;'
     }, 2000);
 }
