@@ -1,11 +1,25 @@
 
-let todaysWord = "";
+let todaysWord = extractTodaysWord();
 let guessString = [];
 let currentRow = 0;
 let activeState = false; 
 
-function getTodaysWord() {
-    /* Here i have to set up something on the webserver so that only todays word gets pulled and not the entire list of possible words. */
+function getTodaysWord(URL, callback) {
+    let xmlHttp = new XMLHttpRequest();
+    xmlHttp.onreadystatechange = function() {
+        if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+            callback(xmlHttp.responseText);
+        }
+    }
+    
+    xmlHttp.open("GET", URL, true);
+    xmlHttp.send(null);
+}
+
+function extractTodaysWord() {
+    let obj = JSON.parse(getTodaysWord("http://localhost:8080/todaysWord"))
+    console.log(obj.word)
+    console.log(obj.todaysDate)
 }
 
 
