@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 </head>
-<body>
+<body onload="main()">
     <div id="wrapper">
         <div id="how_to_play_card">
             <h1>Slik spiller du</h1>
@@ -33,7 +33,7 @@
             </div>
             <p class="tutorial_text">Har du rikig bokstav på riktig plass blir boksen grønn, er bokstaven i ordet men ikke på rett plass blir boksen oransje. Er ikke bokstaven i ordet blir boksen grå!</p>
             <p class="tutorial_text">Du har 6 forsøk på å gjette riktig!</p>
-            <button class="button" id="start_button">Start spillet</button>
+            <button class="button" id="start_button" onclick="start_game()">Start spillet</button>
         </div>
         <div>
             <h1 >Ordspill</h1>

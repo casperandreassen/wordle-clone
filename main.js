@@ -1,27 +1,35 @@
 
-let todaysWord = extractTodaysWord();
+const todaysWord = "";
 let guessString = [];
-let currentRow = 0;
-let activeState = false; 
+let currentRow;
+let activeState = true; 
 
-function getTodaysWord(URL, callback) {
-    let xmlHttp = new XMLHttpRequest();
-    xmlHttp.onreadystatechange = function() {
-        if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
-            callback(xmlHttp.responseText);
-        }
-    }
-    
-    xmlHttp.open("GET", URL, true);
-    xmlHttp.send(null);
+function main() {
+    currentRow = 0; 
+    extractTodaysWord();
 }
+
 
 function extractTodaysWord() {
-    let obj = JSON.parse(getTodaysWord("http://localhost:8080/todaysWord"))
-    console.log(obj.word)
-    console.log(obj.todaysDate)
-}
+    fetch('./wordslists/todaysWord.json')
+    .then(
+    function(response) {
+      if (response.status !== 200) {
+        console.log('Looks like there was a problem. Status Code: ' +
+          response.status);
+        return;
+      }
 
+      // Examine the text in the response
+      response.json().then(function(data) {
+        console.log(data);
+      });
+    }
+  )
+  .catch(function(err) {
+    console.log('Fetch Error :-S', err);
+  });
+}
 
 
 document.addEventListener("keydown", function (event) {
@@ -51,10 +59,11 @@ document.getElementById("guess_button").addEventListener("click", () => {
     handleCheckWordEvent();
 })
 
-document.getElementById("start_button").addEventListener("click", () => {
+function start_game() {
+    console.log("hei")
+    document.getElementById("how_to_play_card").style.cssText = "visibility: hidden;";
     activeState = true;
-    document.getElementById("how_to_play_card").style.cssText = "display: none;"
-})
+}
 
 
 function handleCheckWordEvent() {
