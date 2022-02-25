@@ -1,5 +1,5 @@
 
-const todaysWord = "";
+const todaysWord = "ABBOR";
 let guessString = [];
 let currentRow;
 let activeState = true; 
