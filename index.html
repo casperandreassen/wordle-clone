@@ -8,33 +8,34 @@
     <link rel="preconnect" href="https://fonts.googleapis.com"> 
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/093d414567.js" crossorigin="anonymous"></script>
 </head>
-<body onload="main()">
-    <div id="wrapper">
-        <div id="how_to_play_card">
-            <h1>Slik spiller du</h1>
-            <p class="tutorial_text">Spillet handler om å gjette et norsk ord på 5 bokstaver på så få forsøk som mulig.</p>
-            <div id="how_to_play_tutorial">
-                <div class="letter_box" style="background-color: #46b019; border: 1px solid lightgray; transition: 0.2s;">
-                    <p id="0">F</p>
-                </div>
-                <div class="letter_box" style="background-color: #3b3b3b; border: 1px solid lightgray; transition: 0.2s;">
-                    <p id="1">L</p>
-                </div>
-                <div class="letter_box" style="background-color: #e6a122; border: 1px solid lightgray; transition: 0.2s;">
-                    <p id="2">Y</p>
-                </div>
-                <div class="letter_box" style="background-color: #46b019; border: 1px solid lightgray; transition: 0.2s;">
-                    <p id="3">E</p>
-                </div>
-                <div class="letter_box" style="background-color: #3b3b3b; border: 1px solid lightgray; transition: 0.2s;">
-                    <p id="4">T</p>
-                </div>
+<body onload="init()">
+    <div id="how_to_play_card">
+        <h1>Slik spiller du</h1>
+        <p class="tutorial_text">Spillet handler om å gjette et norsk ord på 5 bokstaver på så få forsøk som mulig.</p>
+        <div id="how_to_play_tutorial">
+            <div class="letter_box" style="background-color: #46b019; border: 1px solid lightgray; transition: 0.2s;">
+                <p id="0">F</p>
             </div>
-            <p class="tutorial_text">Har du rikig bokstav på riktig plass blir boksen grønn, er bokstaven i ordet men ikke på rett plass blir boksen oransje. Er ikke bokstaven i ordet blir boksen grå!</p>
-            <p class="tutorial_text">Du har 6 forsøk på å gjette riktig!</p>
-            <button class="button" id="start_button" onclick="start_game()">Start spillet</button>
+            <div class="letter_box" style="background-color: #3b3b3b; border: 1px solid lightgray; transition: 0.2s;">
+                <p id="1">L</p>
+            </div>
+            <div class="letter_box" style="background-color: #e6a122; border: 1px solid lightgray; transition: 0.2s;">
+                <p id="2">Y</p>
+            </div>
+            <div class="letter_box" style="background-color: #46b019; border: 1px solid lightgray; transition: 0.2s;">
+                <p id="3">E</p>
+            </div>
+            <div class="letter_box" style="background-color: #3b3b3b; border: 1px solid lightgray; transition: 0.2s;">
+                <p id="4">T</p>
+            </div>
         </div>
+        <p class="tutorial_text">Har du rikig bokstav på riktig plass blir boksen grønn, er bokstaven i ordet men ikke på rett plass blir boksen oransje. Er ikke bokstaven i ordet blir boksen grå!</p>
+        <p class="tutorial_text">Du har 6 forsøk på å gjette riktig!</p>
+        <button class="button" id="start_button" onclick="start_game()">Start spillet</button>
+    </div>
+    <div id="wrapper">
         <div>
             <h1 >Ordspill</h1>
             <p>Klarer du dagens ord?</p>
@@ -144,8 +145,45 @@
                 </div>
             </div>
         </div>
-        <div>
-            <button class="button" id="guess_button">Gjett</button>
+        <button class="button" id="play_again" onclick="location.reload()" style="visibility: hidden;">Spill igjen</button>
+        <div id="keyboard">
+            <div class="keyboard_row" id="keyboard_row1">
+                <button class="key" id="Q" onclick="handleKeyboardInput(this.id)">Q</button>
+                <button class="key" id="W" onclick="handleKeyboardInput(this.id)">W</button>
+                <button class="key" id="E" onclick="handleKeyboardInput(this.id)">E</button>
+                <button class="key" id="R" onclick="handleKeyboardInput(this.id)">R</button>
+                <button class="key" id="T" onclick="handleKeyboardInput(this.id)">T</button>
+                <button class="key" id="Y" onclick="handleKeyboardInput(this.id)">Y</button>
+                <button class="key" id="U" onclick="handleKeyboardInput(this.id)">U</button>
+                <button class="key" id="I" onclick="handleKeyboardInput(this.id)">I</button>
+                <button class="key" id="O" onclick="handleKeyboardInput(this.id)">O</button>
+                <button class="key" id="P" onclick="handleKeyboardInput(this.id)">P</button>
+                <button class="key" id="Å" onclick="handleKeyboardInput(this.id)">Å</button>
+            </div>
+            <div class="keyboard_row" id="keyboard_row2">
+                <button class="key" id="A" onclick="handleKeyboardInput(this.id)">A</button>
+                <button class="key" id="S" onclick="handleKeyboardInput(this.id)">S</button>
+                <button class="key" id="D" onclick="handleKeyboardInput(this.id)">D</button>
+                <button class="key" id="F" onclick="handleKeyboardInput(this.id)">F</button>
+                <button class="key" id="G" onclick="handleKeyboardInput(this.id)">G</button>
+                <button class="key" id="H" onclick="handleKeyboardInput(this.id)">H</button>
+                <button class="key" id="J" onclick="handleKeyboardInput(this.id)">J</button>
+                <button class="key" id="K" onclick="handleKeyboardInput(this.id)">K</button>
+                <button class="key" id="L" onclick="handleKeyboardInput(this.id)">L</button>
+                <button class="key" id="Ø" onclick="handleKeyboardInput(this.id)">Ø</button>
+                <button class="key" id="Æ" onclick="handleKeyboardInput(this.id)">Æ</button>
+            </div>
+            <div class="keyboard_row" id="keyboard_row3">
+                <button class="key" id="clear" onclick="handleKeyboardInput(this.id)"><i class="fa-solid fa-delete-left"></i></button>
+                <button class="key" id="Z" onclick="handleKeyboardInput(this.id)">Z</button>
+                <button class="key" id="X" onclick="handleKeyboardInput(this.id)">X</button>
+                <button class="key" id="C" onclick="handleKeyboardInput(this.id)">C</button>
+                <button class="key" id="V" onclick="handleKeyboardInput(this.id)">V</button>
+                <button class="key" id="B" onclick="handleKeyboardInput(this.id)">B</button>
+                <button class="key" id="N" onclick="handleKeyboardInput(this.id)">N</button>
+                <button class="key" id="M" onclick="handleKeyboardInput(this.id)">M</button>
+                <button class="key" id="guess_button" onclick="handleKeyboardInput(this.id)">GJETT</button>
+            </div>
         </div>
     </div>
     <script src="main.js"></script>

@@ -2,6 +2,10 @@ body {
     background-color: #141414;
     color: #e0e0e0;
     font-family: 'Poppins', sans-serif;
+    margin: 0;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
 }
 
 #wrapper {
@@ -13,7 +17,7 @@ body {
 }
 
 .button {
-    margin-top: 30px;
+    margin: 30px 0 30px 0 ;
     background-color: #1167f2;
     width: 125px;
     height: 60px;
@@ -70,9 +74,13 @@ body {
 
 #how_to_play_card {
     position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 500px;
-    height: 620px;    
-    margin: auto;
+    height: 650px;  
+    margin-top: 20px;  
     background-color: #242424;
     border: 1px solid #3d3d3d;
     border-radius: 30px;
@@ -113,3 +121,204 @@ body {
 }
 
 
+#keyboard {
+    position: absolute;
+    bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.keyboard_row {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: center;
+}
+
+.key {
+    background-color: #3d3d3d;
+    border: 0.5px solid #e0e0e0;
+    border-radius: 2px;
+    font-size: 20pt;
+    color: #e0e0e0;
+    width: 40px;
+    height: 50px;
+    text-align: center;
+}
+
+#clear {
+    width: 53px;
+}
+
+#guess_button {
+    width: 90px;
+}
+
+
+.key:hover {
+    background-color: #505050;
+    cursor: pointer;
+}
+@media only screen and (max-height: 850px) {
+    .letter_box {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .letter_box p {
+        font-size: 18pt;
+        margin: auto;
+        text-align: center;
+        height: 100%;
+        width: 100%;
+        line-height: 50px;
+    }
+}
+
+@media only screen and (max-height: 770px) {
+    .letter_box {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .letter_box p {
+        font-size: 16pt;
+        margin: auto;
+        text-align: center;
+        height: 100%;
+        width: 100%;
+        line-height: 40px;
+    }
+}
+
+@media only screen and (max-height: 820px), screen and (max-width: 380px) {
+    .key {
+        width: 22px;
+        height: 28px;
+        font-size: 10pt;
+        text-align: center;
+    }
+
+    
+}
+
+@media only screen and (max-width: 546px) {
+    .key {
+        width: 30px;
+        height: 50px;
+        font-size: 15pt;
+        text-align: center;
+    }
+    #clear {
+        width: 38px;
+    }
+
+    #guess_button {
+        width: 70px;
+    }
+    #keyboard {
+        gap: 6px;
+        display: none;
+    }
+    
+    .keyboard_row {
+        gap: 6px;
+    }
+
+    .letter_box {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .letter_box p {
+        font-size: 20pt;
+        margin: auto;
+        text-align: center;
+        height: 100%;
+        width: 100%;
+        line-height: 50px;
+    }
+
+    #how_to_play_card {
+        width: 100%;
+        height: 100%;    
+    }
+    
+    .tutorial_text{
+        width: 80%;
+        text-align: center;
+        margin: auto;
+    }
+    
+    #how_to_play_tutorial {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 5px;
+        padding: 40px 0px;
+    }
+
+    #letter_grid {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    .key {
+        width: 25px;
+        height: 45px;
+        font-size: 13pt;
+        text-align: center;
+    }
+
+    .letter_box {
+        width: 45px;
+        height: 45px;
+    }
+    
+    .letter_box p {
+        font-size: 12pt;
+        margin: auto;
+        text-align: center;
+        height: 100%;
+        width: 100%;
+        line-height: 45px;
+    }
+
+
+}
+
+@media only screen and (max-width: 350px) {
+    .key {
+        width: 22px;
+        height: 35px;
+        font-size: 13pt;
+        text-align: center;
+    }
+
+    .letter_box {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .letter_box p {
+        font-size: 12pt;
+        margin: auto;
+        text-align: center;
+        height: 100%;
+        width: 100%;
+        line-height: 35px;
+    }
+
+    #how_to_play_tutorial {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 5px;
+        padding: 0px 0px;
+        margin: 0;
+    }
+
+
+}
